@@ -96,7 +96,7 @@
 .chapter-1 { width: calc(100% - clamp(48px, 10vw, 152px)); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(220px, .8fr); align-items: end; gap: clamp(28px, 6vw, 100px); padding-top: 24px; }
 .chapter-1 .chapter-image { height: min(68vw, 730px); border: 1px solid color-mix(in srgb, var(--secondary) 40%, transparent); }
 .chapter-1 .chapter-copy { padding-bottom: 9%; }
-.chapter-1 .chapter-copy h2 { font-size: clamp(72px, 9vw, 142px); margin-left: clamp(-95px, -7vw, -25px); white-space: nowrap; text-shadow: 0 5px 22px var(--background); }
+.chapter-1 .chapter-copy h2 { font-size: clamp(56px, 6.5vw, 100px); margin-left: clamp(-95px, -7vw, -25px); max-width: 100%; text-shadow: 0 5px 22px var(--background); }
 .chapter-2 { margin-top: clamp(110px, 15vw, 230px); width: min(1070px, 85%); display: grid; grid-template-columns: .8fr 1fr; align-items: center; gap: 8%; }
 .chapter-2 .chapter-image { width: 78%; justify-self: end; padding: 10px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
 .chapter-2 .chapter-image img { aspect-ratio: 3/4; }

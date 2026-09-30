@@ -18,7 +18,7 @@ const buttonVariants = cva(
         link: "text-primary underline-offset-4 hover:underline",
         gallery: "border border-studio-foreground/35 bg-transparent text-studio-foreground hover:border-gold hover:text-gold",
         galleryActive: "border border-gold bg-gold text-studio hover:bg-gold/90",
-        detailIcon: "bg-card text-foreground hover:bg-secondary",
+        detailIcon: "bg-card text-card-foreground hover:bg-secondary hover:text-secondary-foreground",
         artwork: "bg-transparent text-foreground hover:opacity-90 focus-visible:ring-2 focus-visible:ring-gold",
         detailLink: "rounded-none border-b border-gold bg-transparent text-gold hover:text-foreground",
       },

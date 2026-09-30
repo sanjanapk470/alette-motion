@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep the art portfolio as one collection page with a local artwork record and an in-page detail dialog; this makes the illustrative collection immediately browsable without inventing persistent inventory.

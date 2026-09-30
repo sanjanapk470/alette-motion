@@ -1,24 +1,194 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
+import { ArrowDown, ArrowLeft, ArrowRight, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import tanjoreImage from "@/assets/lotus-tanjore.jpg";
+import oilImage from "@/assets/monsoon-oil.jpg";
+import riverImage from "@/assets/river-watercolour.jpg";
+import peacockImage from "@/assets/peacock-miniature.jpg";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+type Medium = "All works" | "Oil" | "Watercolour" | "Tanjore" | "Miniature";
+type Work = {
+  title: string;
+  medium: Exclude<Medium, "All works">;
+  material: string;
+  dimensions: string;
+  image: string;
+  alt: string;
+  shape: "portrait" | "landscape";
+  story: string;
+};
+
+const works: Work[] = [
+  {
+    title: "After the Rain",
+    medium: "Oil",
+    material: "Oil on canvas",
+    dimensions: "76 × 102 cm",
+    image: oilImage,
+    alt: "Oil painting of a woman in a saffron sari walking through a rain-soaked Indian street",
+    shape: "portrait",
+    story: "An imagined monsoon passage, where the last light catches on wet stone and a saffron sari becomes the warmest note in a blue-grey city. Layered brushwork gives the street its sense of movement.",
+  },
+  {
+    title: "Lotus & Light",
+    medium: "Tanjore",
+    material: "Tanjore-inspired painting with gold detailing",
+    dimensions: "61 × 81 cm",
+    image: tanjoreImage,
+    alt: "Gold-detailed Tanjore-inspired painting of Lakshmi seated on a pink lotus",
+    shape: "portrait",
+    story: "Inspired by the radiance of South Indian Tanjore painting, this composition gathers lotus pink, deep green and gold around a still central figure. The ornament is as much a part of the story as the portrait itself.",
+  },
+  {
+    title: "A River Wakes",
+    medium: "Watercolour",
+    material: "Watercolour on paper",
+    dimensions: "56 × 42 cm",
+    image: riverImage,
+    alt: "Soft watercolour of boats and riverside ghats at dawn in Varanasi",
+    shape: "landscape",
+    story: "Morning on the river is rendered in transparent washes: steps and spires appear through the mist while small boats carry the eye across the pale, reflective water.",
+  },
+  {
+    title: "The Peacock Garden",
+    medium: "Miniature",
+    material: "Miniature-inspired gouache on paper",
+    dimensions: "38 × 51 cm",
+    image: peacockImage,
+    alt: "Detailed miniature-inspired painting of a blue peacock in a flowering courtyard",
+    shape: "portrait",
+    story: "A peacock holds court among tiny flowers, patterned borders and a quiet garden pavilion. The piece borrows the patient, intimate scale of Indian miniature painting to invite a closer look.",
+  },
+];
+
+const mediums: Medium[] = ["All works", "Oil", "Watercolour", "Tanjore", "Miniature"];
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Rang & Reverie — Indian-Inspired Art Portfolio" },
+      { name: "description", content: "Explore a studio wall of Indian-inspired oil, watercolour, Tanjore and miniature artworks. Open each canvas to discover its details." },
+      { property: "og:title", content: "Rang & Reverie — Indian-Inspired Art Portfolio" },
+      { property: "og:description", content: "An expressive collection of Indian-inspired paintings across oil, watercolour, Tanjore and miniature traditions." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
+  const [medium, setMedium] = useState<Medium>("All works");
+  const [selected, setSelected] = useState<number | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const triggerRef = useRef<HTMLButtonElement | null>(null);
+  const filtered = medium === "All works" ? works : works.filter((work) => work.medium === medium);
+  const active = selected === null ? null : works[selected];
+
+  function openWork(index: number, trigger: HTMLButtonElement) {
+    triggerRef.current = trigger;
+    setSelected(index);
+  }
+  function closeWork() {
+    setSelected(null);
+    requestAnimationFrame(() => triggerRef.current?.focus());
+  }
+  function moveWork(direction: number) {
+    if (selected === null) return;
+    setSelected((selected + direction + works.length) % works.length);
+  }
+
+  useEffect(() => {
+    if (selected === null) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    closeRef.current?.focus();
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") closeWork();
+      if (event.key === "ArrowLeft") moveWork(-1);
+      if (event.key === "ArrowRight") moveWork(1);
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [selected]);
+
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="portfolio-shell">
+      <header className="site-header">
+        <a className="wordmark" href="#top" aria-label="Rang and Reverie, back to top">rang<span>&</span>reverie</a>
+        <nav className="header-nav" aria-label="Main navigation">
+          <a href="#collection">The collection</a>
+          <a href="#studio">The studio</a>
+        </nav>
+        <span className="header-note">An artful archive</span>
+      </header>
+
+      <main id="top">
+        <section className="intro" aria-labelledby="page-title">
+          <div className="eyebrow">A study in colour & culture</div>
+          <h1 id="page-title">Where stories<br />become <em>colour.</em></h1>
+          <div className="intro-bottom">
+            <p>A collection of Indian-inspired works in oil, watercolour, gold and more. Each piece holds a world of its own.</p>
+            <a className="scroll-cue" href="#collection">Explore the works <ArrowDown size={18} strokeWidth={1.5} aria-hidden="true" /></a>
+          </div>
+        </section>
+
+        <section className="gallery-band" id="collection" aria-labelledby="collection-title">
+          <div className="gallery-inner">
+            <div className="gallery-top">
+              <div><div className="section-kicker">01 / Selected works</div><h2 id="collection-title">The studio wall</h2></div>
+              <span className="gallery-count">{String(filtered.length).padStart(2, "0")} / 04 artworks</span>
+            </div>
+            <div className="medium-filter" role="group" aria-label="Filter artworks by medium">
+              {mediums.map((item) => <Button key={item} variant={medium === item ? "galleryActive" : "gallery"} size="gallery" onClick={() => setMedium(item)} aria-pressed={medium === item}>{item}</Button>)}
+            </div>
+            <div className="wall">
+              {filtered.map((work) => {
+                const index = works.indexOf(work);
+                return <button className="artwork" type="button" key={work.title} data-shape={work.shape} onClick={(event) => openWork(index, event.currentTarget)} aria-label={`View details for ${work.title}`}>
+                  <span className="artwork-frame"><img src={work.image} alt={work.alt} width={work.shape === "landscape" ? 1200 : 912} height={work.shape === "landscape" ? 912 : 1200} loading={index === 0 ? "eager" : "lazy"} /></span>
+                  <span className="artwork-meta"><span className="artwork-title">{work.title}</span><span className="artwork-index">0{index + 1} ↗</span></span>
+                  <span className="artwork-medium">{work.medium} · Open artwork</span>
+                </button>;
+              })}
+            </div>
+          </div>
+        </section>
+
+        <section className="studio-note" id="studio" aria-labelledby="studio-title">
+          <div className="studio-note-inner">
+            <div><div className="eyebrow">The practice</div><h2 id="studio-title">Many mediums.<br /><em>One imagination.</em></h2></div>
+            <div className="studio-copy"><p>From the softness of a watercolour wash to the glow of gold, every surface tells its story differently.</p><small>This is an illustrative portfolio concept. The artwork images and details shown here are examples, ready to be replaced with the artist’s own collection.</small></div>
+          </div>
+        </section>
+      </main>
+      <footer className="site-footer"><span>Rang & Reverie</span><span>Indian-inspired art · An illustrative collection</span></footer>
+
+      {active && <div className="detail-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) closeWork(); }}>
+        <div className="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title" key={active.title}>
+          <Button ref={closeRef} variant="detailIcon" size="icon" className="detail-close" onClick={closeWork} aria-label="Close artwork details"><X aria-hidden="true" /></Button>
+          <div className="detail-visual"><img src={active.image} alt={active.alt} width={active.shape === "landscape" ? 1200 : 912} height={active.shape === "landscape" ? 912 : 1200} /></div>
+          <div className="detail-content">
+            <div className="eyebrow">Artwork 0{(selected ?? 0) + 1} / 04</div>
+            <h2 id="detail-title">{active.title}</h2>
+            <p>{active.story}</p>
+            <dl className="detail-facts">
+              <div><dt>Medium</dt><dd>{active.medium}</dd></div>
+              <div><dt>Materials</dt><dd>{active.material}</dd></div>
+              <div><dt>Size</dt><dd>{active.dimensions}</dd></div>
+            </dl>
+            <div className="detail-actions">
+              <Button variant="outline" size="icon" onClick={() => moveWork(-1)} aria-label="Previous artwork"><ArrowLeft aria-hidden="true" /></Button>
+              <span className="gallery-count">0{(selected ?? 0) + 1} — 04</span>
+              <Button variant="outline" size="icon" onClick={() => moveWork(1)} aria-label="Next artwork"><ArrowRight aria-hidden="true" /></Button>
+            </div>
+          </div>
+        </div>
+      </div>}
     </div>
   );
 }

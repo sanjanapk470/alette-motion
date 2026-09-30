@@ -1,7 +1,7 @@
 # Art portfolio redesign: editorial archive
 
 ## Direction
-Rework the existing single-page portfolio into an artwork-first, immersive sequence inspired by Object & Archive’s large-scale editorial presentation. Follow the selected **Asymmetric staggered gallery**: a compact archive header followed immediately by four medium-led chapters with dramatically varied scale and alignment rather than a carousel.
+Rework the existing single-page portfolio into an artwork-first, immersive sequence directly inspired by **Object & Archive**: paintings take visual priority through large, edge-to-edge imagery, layered editorial typography, and distinctive ways of discovering art by type. Follow the selected **Asymmetric staggered gallery** composition: a compact archive header followed immediately by four medium-led chapters with dramatically varied scale and alignment rather than a carousel. Borrow the reference’s visual principles, not its branding, artwork, or shopping features.
 
 ## What visitors will see
 - A night-museum palette with charcoal, pale ivory, muted gold, and soft sage; Cormorant Garamond headings paired with Karla body text.

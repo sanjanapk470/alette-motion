@@ -1,3 +1,5 @@
 - [x] Restyle the portfolio as the selected asymmetric staggered gallery, using Object & Archive as an artwork-first reference.
 - [x] Keep medium browsing and the existing artwork detail interaction usable.
 - [x] Verify desktop and mobile layouts and artwork interactions.
+- [x] Correct the design to follow Object & Archive's actual image-led opening, oversized title, and collection presentation with Indian-inspired works.
+- [x] Verify the corrected layout and artwork detail interaction on desktop and mobile.

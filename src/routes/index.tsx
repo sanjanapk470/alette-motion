@@ -119,17 +119,18 @@ function Index() {
   return (
     <div className="portfolio-shell">
       <main id="top">
-        <header className="site-header">
-          <a className="wordmark" href="#top" aria-label="Rang and Reverie, back to top"><span className="wordmark-kicker">Indian-inspired art / selected works</span><span className="wordmark-name">rang<span>&</span>reverie</span></a>
-          <span className="header-rule" aria-hidden="true" />
-          <a className="header-link" href="#studio">The studio ↗</a>
-        </header>
+        <section className="hero" aria-labelledby="hero-title">
+          <div className="hero-half hero-half-left"><img src={riverImage} alt="Watercolour of boats and riverside ghats at dawn" /><div className="hero-inset"><span>02 / 04 &nbsp; LOTUS & LIGHT</span><img src={tanjoreImage} alt="Gold-detailed Tanjore-inspired painting of Lakshmi" /></div></div>
+          <div className="hero-half hero-half-right"><img src={oilImage} alt="Oil painting of a rain-soaked Indian street" /><div className="hero-thought"><h1 id="hero-title">Indian art, seen<br />in a new light.</h1><a href="#collection">Explore the collection <ArrowRight size={16} aria-hidden="true" /></a></div></div>
+          <header className="site-header"><a href="#collection">WORKS</a><a href="#studio">THE STUDIO</a><a className="wordmark" href="#top" aria-label="Rang and Reverie, back to top">rang & reverie</a><a href="#collection">THE COLLECTION</a><span>EST. IN IMAGINATION</span></header>
+          <div className="hero-title" aria-hidden="true"><span>RANG &</span><span>REVERIE</span></div>
+        </section>
 
         <section className="gallery-band" id="collection" aria-labelledby="page-title">
           <div className="gallery-inner">
             <div className="gallery-intro">
-              <div><span className="section-kicker">The collection / 01—04</span><h1 id="page-title">An artful <em>archive.</em></h1></div>
-              <p>Indian-inspired works in oil, watercolour, Tanjore and miniature traditions.</p>
+              <div><span className="section-kicker">THE COLLECTION / 01—04</span><h2 id="page-title">Works in many forms.</h2></div>
+              <p>Oil, watercolour, Tanjore and miniature-inspired paintings. Each piece holds a world of its own.</p>
             </div>
             <div className="medium-filter" role="group" aria-label="Filter artworks by medium">
               {mediums.map((item) => <Button key={item} variant={medium === item ? "galleryActive" : "gallery"} size="gallery" onClick={() => setMedium(item)} aria-pressed={medium === item}>{item}</Button>)}
@@ -139,15 +140,12 @@ function Index() {
               {filtered.map((work) => {
                 const index = works.indexOf(work);
                 return <section className={`chapter chapter-${index + 1}`} key={work.title} aria-labelledby={`work-title-${index}`}>
-                  {index === 1 && <span className="chapter-vertical" aria-hidden="true">Tanjore tradition</span>}
                   <Button variant="artwork" size="artwork" className="chapter-image" onClick={(event) => openWork(index, event.currentTarget)} aria-label={`View details for ${work.title}`}>
                     <img src={work.image} alt={work.alt} width={work.shape === "landscape" ? 1200 : 900} height={work.shape === "landscape" ? 900 : 1200} loading={index === 0 ? "eager" : "lazy"} />
-                    {index === 2 && <span className="river-number" aria-hidden="true">III</span>}
                   </Button>
                   <div className="chapter-copy">
                     <span className="chapter-number">0{index + 1} / {work.medium}</span>
                     <h2 id={`work-title-${index}`}>{work.title}</h2>
-                    <p>{index === 0 ? "An imagined monsoon passage in layers of oil and colour." : index === 1 ? "Radiant ornament inspired by the Tanjore tradition." : index === 2 ? "Morning on the river in transparent watercolour washes." : "A close look at the patient detail of Indian miniature painting."}</p>
                     <Button variant="detailLink" size="default" onClick={(event) => openWork(index, event.currentTarget)} aria-label={`Explore details for ${work.title}`}>Explore detail <ArrowRight aria-hidden="true" /></Button>
                   </div>
                 </section>;

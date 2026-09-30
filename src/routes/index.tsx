@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowLeft, ArrowRight, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import tanjoreImage from "@/assets/lotus-tanjore.jpg";
 import oilImage from "@/assets/monsoon-oil.jpg";
@@ -68,7 +68,7 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Rang & Reverie — Indian-Inspired Art Portfolio" },
-      { name: "description", content: "Explore a studio wall of Indian-inspired oil, watercolour, Tanjore and miniature artworks. Open each canvas to discover its details." },
+      { name: "description", content: "Explore an editorial collection of Indian-inspired oil, watercolour, Tanjore and miniature artworks. Open each painting to discover its story." },
       { property: "og:title", content: "Rang & Reverie — Indian-Inspired Art Portfolio" },
       { property: "og:description", content: "An expressive collection of Indian-inspired paintings across oil, watercolour, Tanjore and miniature traditions." },
       { property: "og:type", content: "website" },
@@ -118,42 +118,39 @@ function Index() {
 
   return (
     <div className="portfolio-shell">
-      <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="Rang and Reverie, back to top">rang<span>&</span>reverie</a>
-        <nav className="header-nav" aria-label="Main navigation">
-          <a href="#collection">The collection</a>
-          <a href="#studio">The studio</a>
-        </nav>
-        <span className="header-note">An artful archive</span>
-      </header>
-
       <main id="top">
-        <section className="intro" aria-labelledby="page-title">
-          <div className="eyebrow">A study in colour & culture</div>
-          <h1 id="page-title">Where stories<br />become <em>colour.</em></h1>
-          <div className="intro-bottom">
-            <p>A collection of Indian-inspired works in oil, watercolour, gold and more. Each piece holds a world of its own.</p>
-            <a className="scroll-cue" href="#collection">Explore the works <ArrowDown size={18} strokeWidth={1.5} aria-hidden="true" /></a>
-          </div>
-        </section>
+        <header className="site-header">
+          <a className="wordmark" href="#top" aria-label="Rang and Reverie, back to top"><span className="wordmark-kicker">Indian-inspired art / selected works</span><span className="wordmark-name">rang<span>&</span>reverie</span></a>
+          <span className="header-rule" aria-hidden="true" />
+          <a className="header-link" href="#studio">The studio ↗</a>
+        </header>
 
-        <section className="gallery-band" id="collection" aria-labelledby="collection-title">
+        <section className="gallery-band" id="collection" aria-labelledby="page-title">
           <div className="gallery-inner">
-            <div className="gallery-top">
-              <div><div className="section-kicker">01 / Selected works</div><h2 id="collection-title">The studio wall</h2></div>
-              <span className="gallery-count">{String(filtered.length).padStart(2, "0")} / 04 artworks</span>
+            <div className="gallery-intro">
+              <div><span className="section-kicker">The collection / 01—04</span><h1 id="page-title">An artful <em>archive.</em></h1></div>
+              <p>Indian-inspired works in oil, watercolour, Tanjore and miniature traditions.</p>
             </div>
             <div className="medium-filter" role="group" aria-label="Filter artworks by medium">
               {mediums.map((item) => <Button key={item} variant={medium === item ? "galleryActive" : "gallery"} size="gallery" onClick={() => setMedium(item)} aria-pressed={medium === item}>{item}</Button>)}
             </div>
-            <div className="wall">
+            <div className="gallery-count" aria-live="polite">Showing {String(filtered.length).padStart(2, "0")} / 04 works</div>
+            <div className="chapters">
               {filtered.map((work) => {
                 const index = works.indexOf(work);
-                return <button className="artwork" type="button" key={work.title} data-shape={work.shape} onClick={(event) => openWork(index, event.currentTarget)} aria-label={`View details for ${work.title}`}>
-                  <span className="artwork-frame"><img src={work.image} alt={work.alt} width={work.shape === "landscape" ? 1200 : 912} height={work.shape === "landscape" ? 912 : 1200} loading={index === 0 ? "eager" : "lazy"} /></span>
-                  <span className="artwork-meta"><span className="artwork-title">{work.title}</span><span className="artwork-index">0{index + 1} ↗</span></span>
-                  <span className="artwork-medium">{work.medium} · Open artwork</span>
-                </button>;
+                return <section className={`chapter chapter-${index + 1}`} key={work.title} aria-labelledby={`work-title-${index}`}>
+                  {index === 1 && <span className="chapter-vertical" aria-hidden="true">Tanjore tradition</span>}
+                  <Button variant="artwork" size="artwork" className="chapter-image" onClick={(event) => openWork(index, event.currentTarget)} aria-label={`View details for ${work.title}`}>
+                    <img src={work.image} alt={work.alt} width={work.shape === "landscape" ? 1200 : 900} height={work.shape === "landscape" ? 900 : 1200} loading={index === 0 ? "eager" : "lazy"} />
+                    {index === 2 && <span className="river-number" aria-hidden="true">III</span>}
+                  </Button>
+                  <div className="chapter-copy">
+                    <span className="chapter-number">0{index + 1} / {work.medium}</span>
+                    <h2 id={`work-title-${index}`}>{work.title}</h2>
+                    <p>{index === 0 ? "An imagined monsoon passage in layers of oil and colour." : index === 1 ? "Radiant ornament inspired by the Tanjore tradition." : index === 2 ? "Morning on the river in transparent watercolour washes." : "A close look at the patient detail of Indian miniature painting."}</p>
+                    <Button variant="detailLink" size="default" onClick={(event) => openWork(index, event.currentTarget)} aria-label={`Explore details for ${work.title}`}>Explore detail <ArrowRight aria-hidden="true" /></Button>
+                  </div>
+                </section>;
               })}
             </div>
           </div>
@@ -166,7 +163,7 @@ function Index() {
           </div>
         </section>
       </main>
-      <footer className="site-footer"><span>Rang & Reverie</span><span>Indian-inspired art · An illustrative collection</span></footer>
+      <footer className="site-footer"><span>Rang & Reverie</span><span>Indian-inspired art · An illustrative collection</span><a href="#top">Back to top ↑</a></footer>
 
       {active && <div className="detail-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) closeWork(); }}>
         <div className="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title" key={active.title}>

@@ -19,6 +19,8 @@ const buttonVariants = cva(
         gallery: "border border-studio-foreground/35 bg-transparent text-studio-foreground hover:border-gold hover:text-gold",
         galleryActive: "border border-gold bg-gold text-studio hover:bg-gold/90",
         detailIcon: "bg-card text-foreground hover:bg-secondary",
+        artwork: "bg-transparent text-foreground hover:opacity-90 focus-visible:ring-2 focus-visible:ring-gold",
+        detailLink: "rounded-none border-b border-gold bg-transparent text-gold hover:text-foreground",
       },
       size: {
         default: "h-9 px-4 py-2",
@@ -26,6 +28,7 @@ const buttonVariants = cva(
         lg: "h-10 rounded-md px-8",
         icon: "h-9 w-9",
         gallery: "h-9 rounded-none px-4 text-[10px] uppercase tracking-widest",
+        artwork: "h-auto w-full rounded-none p-0",
       },
     },
     defaultVariants: {

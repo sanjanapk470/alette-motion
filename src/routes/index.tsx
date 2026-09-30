@@ -173,7 +173,7 @@ function Index() {
           <Button ref={closeRef} variant="detailIcon" size="icon" className="detail-close" onClick={closeWork} aria-label="Close artwork details"><X aria-hidden="true" /></Button>
           <div className="detail-visual"><img src={active.image} alt={active.alt} width={active.shape === "landscape" ? 1200 : 912} height={active.shape === "landscape" ? 912 : 1200} /></div>
           <div className="detail-content">
-            <div className="eyebrow">Artwork 0{selected! + 1} / 04</div>
+            <div className="eyebrow">Artwork 0{(selected ?? 0) + 1} / 04</div>
             <h2 id="detail-title">{active.title}</h2>
             <p>{active.story}</p>
             <dl className="detail-facts">
@@ -183,7 +183,7 @@ function Index() {
             </dl>
             <div className="detail-actions">
               <Button variant="outline" size="icon" onClick={() => moveWork(-1)} aria-label="Previous artwork"><ArrowLeft aria-hidden="true" /></Button>
-              <span className="gallery-count">0{selected! + 1} — 04</span>
+              <span className="gallery-count">0{(selected ?? 0) + 1} — 04</span>
               <Button variant="outline" size="icon" onClick={() => moveWork(1)} aria-label="Next artwork"><ArrowRight aria-hidden="true" /></Button>
             </div>
           </div>

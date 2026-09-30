@@ -1,0 +1,3 @@
+- [ ] Restyle the portfolio as the selected asymmetric staggered gallery, using Object & Archive as an artwork-first reference.
+- [ ] Keep medium browsing and the existing artwork detail interaction usable.
+- [ ] Verify desktop and mobile layouts and artwork interactions.

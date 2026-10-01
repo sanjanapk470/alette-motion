@@ -42,11 +42,11 @@
 .hero-thought { position: absolute; top: 40%; left: 12%; right: 12%; text-align: center; text-shadow: 0 2px 20px color-mix(in srgb, var(--foreground) 60%, transparent); }
 .hero-thought h1 { font: 600 clamp(34px, 4vw, 62px)/1.03 var(--font-display); margin: 0 0 21px; }
 .hero-thought a { display: inline-flex; gap: 8px; align-items: center; color: inherit; font: italic 500 17px var(--font-display); text-underline-offset: 5px; }
-.site-header { position: absolute; z-index: 4; top: 0; left: 0; width: 100%; padding: 18px 2.5%; display: grid; grid-template-columns: 1fr 1fr 2fr 1fr 1fr; align-items: start; gap: 10px; font: 600 11px/1.2 var(--font-body); text-transform: uppercase; }
+.site-header { position: absolute; z-index: 4; top: 0; left: 0; width: 100%; padding: 18px 2.5%; display: grid; grid-template-columns: 1fr 2fr 1fr 1fr; align-items: start; gap: 10px; font: 600 11px/1.2 var(--font-body); text-transform: uppercase; }
 .site-header a { color: inherit; text-decoration: none; }
 .site-header a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .site-header .wordmark { text-align: center; font: italic 400 30px/.8 var(--font-display); text-transform: none; white-space: nowrap; }
-.site-header > :nth-child(4), .site-header > :nth-child(5) { text-align: right; }
+.site-header > :nth-child(3), .site-header > :nth-child(4) { text-align: right; }
 .hero-title { position: absolute; z-index: 3; bottom: 4%; left: 2.2%; right: 2.2%; display: flex; justify-content: space-between; gap: 3%; pointer-events: none; font: 300 clamp(78px, 10.6vw, 180px)/.72 var(--font-display); white-space: nowrap; }
 .hero-title span:last-child { text-align: right; }
 .gallery-band { background: var(--background); }
@@ -108,9 +108,9 @@
   .hero-thought h1 { font-size: clamp(26px, 6vw, 40px); }
   .hero-thought a { font-size: 15px; }
   .site-header { padding: 16px 15px; grid-template-columns: 1fr 2fr 1fr; font-size: 9px; }
-  .site-header > :nth-child(2), .site-header > :nth-child(5) { display: none; }
+  .site-header > :nth-child(1), .site-header > :nth-child(4) { display: none; }
   .site-header .wordmark { font-size: 20px; }
-  .site-header > :nth-child(4) { text-align: right; }
+  .site-header > :nth-child(3) { text-align: right; }
   .hero-title { bottom: 7%; font-size: clamp(41px, 11.5vw, 80px); left: 2%; right: 2%; }
   .gallery-intro { padding: 65px 24px 30px; display: block; }
   .gallery-intro h2 { font-size: 55px; }

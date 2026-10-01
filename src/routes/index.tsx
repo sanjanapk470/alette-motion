@@ -122,7 +122,7 @@ function Index() {
         <section className="hero" aria-labelledby="hero-title">
           <div className="hero-half hero-half-left"><img src={riverImage} alt="Watercolour of boats and riverside ghats at dawn" /><div className="hero-inset"><span>02 / 04 &nbsp; LOTUS & LIGHT</span><img src={tanjoreImage} alt="Gold-detailed Tanjore-inspired painting of Lakshmi" /></div></div>
           <div className="hero-half hero-half-right"><img src={oilImage} alt="Oil painting of a rain-soaked Indian street" /><div className="hero-thought"><h1 id="hero-title">Indian art, seen<br />in a new light.</h1><a href="#collection">Explore the collection <ArrowRight size={16} aria-hidden="true" /></a></div></div>
-          <header className="site-header"><a href="#collection">WORKS</a><a href="#studio">THE STUDIO</a><a className="wordmark" href="#top" aria-label="The Layered Canvas, back to top">the layered canvas</a><a href="#collection">THE COLLECTION</a><span>EST. IN IMAGINATION</span></header>
+          <header className="site-header"><a href="#studio">THE STUDIO</a><a className="wordmark" href="#top" aria-label="The Layered Canvas, back to top">the layered canvas</a><a href="#collection">THE COLLECTION</a><span>EST. IN IMAGINATION</span></header>
           <div className="hero-title" aria-hidden="true"><span>LAYERED</span><span>CANVAS</span></div>
         </section>
 

@@ -8,6 +8,6 @@
 - [x] Remove the separate pictured category list and move the four categories into the illustrative gallery, with their blurbs alongside.
 - [x] Show all named works in a scrollable placeholder-image gallery, with individual details and blank medium/materials/size fields.
 - [x] Check category browsing, artwork scrolling, details, and mobile layout.
-- [ ] Place the supplied sheet-collage photographs with their matching artwork records.
-- [ ] Match compact category tabs, remove piece counts, show two larger artworks per desktop view, center the wordmark, and recolor the studio section.
-- [ ] Verify the updated gallery, image details, and layout on desktop and mobile.
+- [x] Place the supplied sheet-collage photographs with their matching artwork records.
+- [x] Match compact category tabs, remove piece counts, show two larger artworks per desktop view, center the wordmark, and recolor the studio section.
+- [x] Verify the updated gallery, image details, and layout on desktop and mobile.

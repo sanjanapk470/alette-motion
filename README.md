@@ -1,14 +1,21 @@
-# Welcome to your Lovable project
+# Vibrant Canvas
+
+I want the create an art website that will serve as a portfolio. All the art is Indian inspired in multiple mediums: oil, water, tanjore paintings and more. 
+I want it to have motion. 
+There should be a feature that when you click on a painting: more details about artwork can be displayed. 
+I don't want the website to just be displaying all images in rectangle carisol. It needs to be a creative way of displaying artwork
+
+Ideas: Would a website that has a canvas that can be flipped through cool? Or painting palette used somehow? smock?
 
 This project was built with [Lovable](https://lovable.dev).
 
 ## Build with Lovable
 
-Open your project in the [Lovable editor](https://lovable.dev) and keep building.
+Continue developing this project in the [Lovable editor](https://lovable.dev/projects/9551f730-3b4a-48ec-bfdb-abad028431f2).
 
 - **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: connect the project to GitHub and every change made in Lovable is committed straight to your repository.
-- **Full ownership**: this code is yours. Push to your repository and your changes sync back into Lovable, ready for your next prompt.
+- **Stay in sync**: every change made in Lovable is committed straight to this repository.
+- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
@@ -20,10 +27,3 @@ cd <repository-name>
 npm i
 npm run dev
 ```
-
-## Built with
-
-- TanStack Start
-- TypeScript
-- React
-- Tailwind CSS

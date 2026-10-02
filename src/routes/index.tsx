@@ -64,13 +64,36 @@ const works: Work[] = [
 
 const mediums: Medium[] = ["All works", "Oil", "Watercolour", "Tanjore", "Miniature"];
 
+const categories = [
+  {
+    name: "Traditional, Devotional & Sacred Art",
+    description: "Classical Indian iconography, deity portraits, Tanjore style, Kalamkari, Pattachitra and temple art.",
+    works: ["Indian Woman Portrait", "Krishna Close-Up", "Ganesha in Frame", "Pattachitra Forest/Village Panel", "Saraswati/Goddess Portrait", "Thangka/Deity Painting", "Radha-Krishna Painting", "Srinathji/Krishna Icon", "Goddess Lakshmi", "Ganesha Face", "Large Vishnu/Panoramas"],
+  },
+  {
+    name: "Folk, Tribal & Decorative Arts",
+    description: "Patterns, dot-work, traditional decorative craft and Lippan mirror arts.",
+    works: ["Gond Tree with Birds", "Patterned Birds on Grey Tree", "Lippan / Mirror Work Square", "Peacocks Under Tree", "Pattachitra Narrative Scenes"],
+  },
+  {
+    name: "Nature, Wildlife & Landscapes",
+    description: "Florals, birds, landscapes and natural scenery.",
+    works: ["Cranes & Wisteria", "Stag at Sunset", "Bird Silhouette at Sunset", "Village Woman Carrying Pot"],
+  },
+  {
+    name: "Modern, Still Life & Whimsical",
+    description: "Contemporary themes, still lifes, architectural accents and modern mixed media.",
+    works: ["Single Red Mushroom", "Window with Flowers", "Blue Bike & Fence", "Potted Plant & Urn", "Fruit & Blue Jar"],
+  },
+] as const;
+
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "The Layered Canvas — Indian-Inspired Art Portfolio" },
-      { name: "description", content: "Explore an editorial collection of Indian-inspired oil, watercolour, Tanjore and miniature artworks. Open each painting to discover its story." },
+      { name: "description", content: "Explore The Layered Canvas: traditional and sacred art, folk and decorative works, nature, landscapes and contemporary still lifes." },
       { property: "og:title", content: "The Layered Canvas — Indian-Inspired Art Portfolio" },
-      { property: "og:description", content: "An expressive collection of Indian-inspired paintings across oil, watercolour, Tanjore and miniature traditions." },
+      { property: "og:description", content: "An Indian-inspired art portfolio spanning traditional, folk, nature and contemporary work." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
@@ -80,11 +103,13 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const [medium, setMedium] = useState<Medium>("All works");
+  const [categoryIndex, setCategoryIndex] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement | null>(null);
   const filtered = medium === "All works" ? works : works.filter((work) => work.medium === medium);
   const active = selected === null ? null : works[selected];
+  const currentCategory = categories[categoryIndex];
 
   function openWork(index: number, trigger: HTMLButtonElement) {
     triggerRef.current = trigger;
@@ -129,9 +154,23 @@ function Index() {
         <section className="gallery-band" id="collection" aria-labelledby="page-title">
           <div className="gallery-inner">
             <div className="gallery-intro">
-              <div><span className="section-kicker">THE COLLECTION / 01—04</span><h2 id="page-title">Works in many forms.</h2></div>
-              <p>Oil, watercolour, Tanjore and miniature-inspired paintings. Each piece holds a world of its own.</p>
+              <div><span className="section-kicker">THE COLLECTION / FOUR WORLDS</span><h2 id="page-title">Works in many forms.</h2></div>
+              <p>From sacred iconography and folk traditions to landscapes and contemporary studies.</p>
             </div>
+            <div className="category-browser" aria-label="Artwork categories">
+              <div className="category-options" role="group" aria-label="Choose an artwork category">
+                {categories.map((category, index) => <Button key={category.name} variant="artwork" size="artwork" className={`category-option ${categoryIndex === index ? "category-option-active" : ""}`} onClick={() => setCategoryIndex(index)} aria-pressed={categoryIndex === index} aria-controls="category-works">
+                  <span className="category-option-number">0{index + 1}</span>
+                  <span className="category-option-name">{category.name}</span>
+                  <span className="category-option-count">{category.works.length} works <ArrowRight size={16} aria-hidden="true" /></span>
+                </Button>)}
+              </div>
+              <div className="category-content" id="category-works" aria-live="polite">
+                <div className="category-content-heading"><span className="section-kicker">CATEGORY 0{categoryIndex + 1} / 04</span><h3>{currentCategory.name}</h3><p>{currentCategory.description}</p></div>
+                <ol className="category-work-list">{currentCategory.works.map((name, index) => <li key={name}><span>{String(index + 1).padStart(2, "0")}</span>{name}</li>)}</ol>
+              </div>
+            </div>
+            <div className="sample-intro"><span className="section-kicker">A CLOSER LOOK</span><h2>Illustrative works</h2><p>Sample artwork images and details shown here are examples, not photographs of the works listed above.</p></div>
             <div className="medium-filter" role="group" aria-label="Filter artworks by medium">
               {mediums.map((item) => <Button key={item} variant={medium === item ? "galleryActive" : "gallery"} size="gallery" onClick={() => setMedium(item)} aria-pressed={medium === item}>{item}</Button>)}
             </div>

@@ -3,3 +3,5 @@
 - [x] Verify desktop and mobile layouts and artwork interactions.
 - [x] Correct the design to follow Object & Archive's actual image-led opening, oversized title, and collection presentation with Indian-inspired works.
 - [x] Verify the corrected layout and artwork detail interaction on desktop and mobile.
+- [ ] Add the four supplied artwork categories and named works without sheet/row references or invented images.
+- [ ] Verify category browsing and the existing artwork details on desktop and mobile.

@@ -165,10 +165,10 @@ function Index() {
                   <span className="category-option-count">{category.works.length} works <ArrowRight size={16} aria-hidden="true" /></span>
                 </Button>)}
               </div>
-              <div className="category-content" id="category-works" aria-live="polite">
+              {currentCategory && <div className="category-content" id="category-works" aria-live="polite">
                 <div className="category-content-heading"><span className="section-kicker">CATEGORY 0{categoryIndex + 1} / 04</span><h3>{currentCategory.name}</h3><p>{currentCategory.description}</p></div>
                 <ol className="category-work-list">{currentCategory.works.map((name, index) => <li key={name}><span>{String(index + 1).padStart(2, "0")}</span>{name}</li>)}</ol>
-              </div>
+              </div>}
             </div>
             <div className="sample-intro"><span className="section-kicker">A CLOSER LOOK</span><h2>Illustrative works</h2><p>Sample artwork images and details shown here are examples, not photographs of the works listed above.</p></div>
             <div className="medium-filter" role="group" aria-label="Filter artworks by medium">

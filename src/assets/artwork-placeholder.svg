@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-label="Artwork image pending">
+  <rect width="800" height="1000" fill="#ebe6da"/>
+  <rect x="46" y="46" width="708" height="908" fill="#f4efe7" stroke="#b3b8ab" stroke-width="2"/>
+  <rect x="76" y="76" width="648" height="848" fill="none" stroke="#b3b8ab" stroke-width="1"/>
+  <circle cx="400" cy="451" r="53" fill="none" stroke="#6b7250" stroke-width="2"/>
+  <path d="M375 467l18-21 13 13 18-24 17 32M377 432h1" fill="none" stroke="#6b7250" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="554" fill="#6b7250" font-family="Georgia,serif" font-size="26" text-anchor="middle">Artwork image coming soon</text>
+</svg>

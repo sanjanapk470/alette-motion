@@ -5,3 +5,6 @@
 - [x] Verify the corrected layout and artwork detail interaction on desktop and mobile.
 - [x] Add the four supplied artwork categories and named works without sheet/row references or invented images.
 - [x] Verify category browsing and the existing artwork details on desktop and mobile.
+- [x] Remove the separate pictured category list and move the four categories into the illustrative gallery, with their blurbs alongside.
+- [x] Show all named works in a scrollable placeholder-image gallery, with individual details and blank medium/materials/size fields.
+- [x] Check category browsing, artwork scrolling, details, and mobile layout.

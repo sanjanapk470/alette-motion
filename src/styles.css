@@ -63,7 +63,7 @@
 .artwork-area { padding: 42px 0 120px; }
 .artwork-area-heading { display: flex; justify-content: space-between; align-items: center; padding: 0 clamp(24px, 5vw, 80px) 22px; }
 .rail-controls { display: flex; gap: 8px; }
-.artwork-rail { display: flex; gap: 22px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; padding: 0 clamp(24px, 5vw, 80px) 25px; }
+.artwork-rail { display: flex; gap: 22px; overflow-x: auto; overscroll-behavior-inline: contain; scroll-snap-type: x mandatory; scrollbar-width: thin; padding: 0 0 25px; margin: 0 clamp(24px, 5vw, 80px); }
 .artwork-card { flex: 0 0 calc((100% - 22px) / 2); min-width: 0; scroll-snap-align: start; }
 .artwork-image { display: block; overflow: hidden; width: 100%; background: var(--muted); }
 .artwork-image img { display: block; width: 100%; aspect-ratio: 4/4.2; object-fit: contain; transition: transform .6s ease; }
@@ -115,7 +115,7 @@
   .collection-overview { min-height: 0; }
   .artwork-area { padding: 36px 0 85px; }
   .artwork-area-heading { padding: 0 24px 18px; }
-  .artwork-rail { padding: 0 24px 24px; gap: 14px; }
+  .artwork-rail { padding: 0 0 24px; margin: 0 24px; gap: 14px; }
   .artwork-card { flex-basis: min(76vw, 340px); }
   .studio-note { padding: 70px 24px; }
   .studio-note-inner { grid-template-columns: 1fr; gap: 35px; }

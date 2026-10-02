@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Keep the art portfolio as one collection page with a local artwork record and an in-page detail dialog; this makes the illustrative collection immediately browsable without inventing persistent inventory.
+- Keep uploaded painting photographs in the asset library and reference them from the local artwork records; this preserves each collage-to-title match while keeping media out of the source repository.

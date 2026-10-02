@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import tanjoreImage from "@/assets/lotus-tanjore.jpg";
 import oilImage from "@/assets/monsoon-oil.jpg";
 import riverImage from "@/assets/river-watercolour.jpg";
-import placeholder from "@/assets/artwork-placeholder.svg";
+import { artworkPhotos } from "@/assets/works";
 
-type Artwork = { title: string; detail: string };
+type Artwork = { title: string; detail: string; image: string };
 type Category = { name: string; description: string; works: Artwork[] };
 
 const categories: Category[] = [
@@ -15,49 +15,49 @@ const categories: Category[] = [
     name: "Traditional, Devotional & Sacred Art",
     description: "Classical Indian iconography, deity portraits, Tanjore style, Kalamkari, Pattachitra, and temple art.",
     works: [
-      { title: "Indian Woman Portrait", detail: "Realism portrait with traditional attire and jewelry." },
-      { title: "Krishna Close-Up", detail: "Detailed Kerala mural and Kalamkari-style face." },
-      { title: "Ganesha in Frame", detail: "Relief and mirror-work motif." },
-      { title: "Pattachitra Forest/Village Panel", detail: "Traditional narrative depicting figure groups and deer." },
-      { title: "Saraswati/Goddess Portrait", detail: "Ornate framed icon." },
-      { title: "Thangka/Deity Painting", detail: "Figure on a lotus pedestal with an aura." },
-      { title: "Radha-Krishna Painting", detail: "Vibrant traditional mural composition." },
-      { title: "Srinathji/Krishna Icon", detail: "Traditional Shrinathji painting with cows." },
-      { title: "Goddess Lakshmi", detail: "Framed traditional deity portrait on a lotus." },
-      { title: "Ganesha Face", detail: "Stylized framed artwork." },
-      { title: "Large Vishnu/Panoramas", detail: "Epic mythic scene." },
+      { title: "Indian Woman Portrait", detail: "Realism portrait with traditional attire and jewelry.", image: artworkPhotos["indian-woman"] },
+      { title: "Krishna Close-Up", detail: "Detailed Kerala mural and Kalamkari-style face.", image: artworkPhotos["krishna-closeup"] },
+      { title: "Ganesha in Frame", detail: "Relief and mirror-work motif.", image: artworkPhotos["ganesha-frame"] },
+      { title: "Pattachitra Forest/Village Panel", detail: "Traditional narrative depicting figure groups and deer.", image: artworkPhotos["pattachitra-forest"] },
+      { title: "Saraswati/Goddess Portrait", detail: "Ornate framed icon.", image: artworkPhotos.saraswati },
+      { title: "Thangka/Deity Painting", detail: "Figure on a lotus pedestal with an aura.", image: artworkPhotos.thangka },
+      { title: "Radha-Krishna Painting", detail: "Vibrant traditional mural composition.", image: artworkPhotos["radha-krishna"] },
+      { title: "Srinathji/Krishna Icon", detail: "Traditional Shrinathji painting with cows.", image: artworkPhotos.srinathji },
+      { title: "Goddess Lakshmi", detail: "Framed traditional deity portrait on a lotus.", image: artworkPhotos.lakshmi },
+      { title: "Ganesha Face", detail: "Stylized framed artwork.", image: artworkPhotos["ganesha-face"] },
+      { title: "Large Vishnu/Panoramas", detail: "Epic mythic scene.", image: artworkPhotos["vishnu-panorama"] },
     ],
   },
   {
     name: "Folk, Tribal & Decorative Arts",
     description: "Patterns, dot-work, traditional decorative craft, and Lippan/mirror arts.",
     works: [
-      { title: "Gond Tree with Birds", detail: "Yellow background with patterned birds." },
-      { title: "Patterned Birds on Grey Tree", detail: "Stylized folk art composition." },
-      { title: "Lippan / Mirror Work Square", detail: "Geometric blue and copper pattern." },
-      { title: "Peacocks Under Tree", detail: "Folk art painting on white canvas." },
-      { title: "Pattachitra Narrative Scenes", detail: "Red-bordered multi-panel traditional folk painting." },
+      { title: "Gond Tree with Birds", detail: "Yellow background with patterned birds.", image: artworkPhotos["gond-tree"] },
+      { title: "Patterned Birds on Grey Tree", detail: "Stylized folk art composition.", image: artworkPhotos["patterned-birds"] },
+      { title: "Lippan / Mirror Work Square", detail: "Geometric blue and copper pattern.", image: artworkPhotos["lippan-square"] },
+      { title: "Peacocks Under Tree", detail: "Folk art painting on white canvas.", image: artworkPhotos["peacocks-tree"] },
+      { title: "Pattachitra Narrative Scenes", detail: "Red-bordered multi-panel traditional folk painting.", image: artworkPhotos["pattachitra-scenes"] },
     ],
   },
   {
     name: "Nature, Wildlife & Landscapes",
     description: "Florals, birds, landscapes, and natural scenery.",
     works: [
-      { title: "Cranes & Wisteria", detail: "East Asian style with a gold-foil finish." },
-      { title: "Stag at Sunset", detail: "Silhouette landscape." },
-      { title: "Bird Silhouette at Sunset", detail: "Warm sky with a branch." },
-      { title: "Village Woman Carrying Pot", detail: "Rural landscape and figure study." },
+      { title: "Cranes & Wisteria", detail: "East Asian style with a gold-foil finish.", image: artworkPhotos["cranes-wisteria"] },
+      { title: "Stag at Sunset", detail: "Silhouette landscape.", image: artworkPhotos["stag-sunset"] },
+      { title: "Bird Silhouette at Sunset", detail: "Warm sky with a branch.", image: artworkPhotos["bird-sunset"] },
+      { title: "Village Woman Carrying Pot", detail: "Rural landscape and figure study.", image: artworkPhotos["village-woman"] },
     ],
   },
   {
     name: "Modern, Still Life & Whimsical",
     description: "Contemporary themes, still lifes, architectural accents, and modern mixed media.",
     works: [
-      { title: "Single Red Mushroom", detail: "Whimsical illustration." },
-      { title: "Window with Flowers", detail: "Architectural wall art." },
-      { title: "Blue Bike & Fence", detail: "Impressionistic outdoor scene." },
-      { title: "Potted Plant & Urn", detail: "Decorative still life canvas." },
-      { title: "Fruit & Blue Jar", detail: "Classic realism still life." },
+      { title: "Single Red Mushroom", detail: "Whimsical illustration.", image: artworkPhotos["red-mushroom"] },
+      { title: "Window with Flowers", detail: "Architectural wall art.", image: artworkPhotos["window-flowers"] },
+      { title: "Blue Bike & Fence", detail: "Impressionistic outdoor scene.", image: artworkPhotos["blue-bike"] },
+      { title: "Potted Plant & Urn", detail: "Decorative still life canvas.", image: artworkPhotos["potted-plant"] },
+      { title: "Fruit & Blue Jar", detail: "Classic realism still life.", image: artworkPhotos["fruit-blue-jar"] },
     ],
   },
 ];
@@ -135,20 +135,20 @@ function Index() {
 
         <section className="gallery-band" id="collection" aria-labelledby="collection-title">
           <div className="gallery-inner">
-            <div className="collection-heading"><span className="section-kicker">THE COLLECTION / FOUR WORLDS</span><h2 id="collection-title">Illustrative works</h2></div>
+            <div className="collection-heading"><span className="section-kicker">THE COLLECTION</span><h2 id="collection-title">The artworks</h2></div>
             <div className="collection-browser">
               <nav className="collection-categories" aria-label="Artwork categories">
                 {categories.map((item, index) => <Button key={item.name} variant="artwork" size="artwork" className={`collection-category ${categoryIndex === index ? "collection-category-active" : ""}`} onClick={() => chooseCategory(index)} aria-pressed={categoryIndex === index} aria-controls="artwork-rail">
-                  <span className="category-index">0{index + 1}</span><span className="category-name">{item.name}</span><span className="category-count">{item.works.length} works <ArrowRight size={16} aria-hidden="true" /></span>
+                  {item.name}
                 </Button>)}
               </nav>
-              {category && <div className="collection-overview" aria-live="polite"><span className="section-kicker">CATEGORY 0{categoryIndex + 1} / 04</span><h3>{category.name}</h3><p>{category.description}</p></div>}
+              {category && <div className="collection-overview" aria-live="polite"><p>{category.description}</p></div>}
             </div>
             {category && <div className="artwork-area">
-              <div className="artwork-area-heading"><span className="section-kicker">{category.works.length} WORKS</span><div className="rail-controls"><Button variant="outline" size="icon" onClick={() => scrollWorks(-1)} aria-label="Scroll artworks left"><ArrowLeft aria-hidden="true" /></Button><Button variant="outline" size="icon" onClick={() => scrollWorks(1)} aria-label="Scroll artworks right"><ArrowRight aria-hidden="true" /></Button></div></div>
+              <div className="artwork-area-heading"><div className="rail-controls"><Button variant="outline" size="icon" onClick={() => scrollWorks(-1)} aria-label="Scroll artworks left"><ArrowLeft aria-hidden="true" /></Button><Button variant="outline" size="icon" onClick={() => scrollWorks(1)} aria-label="Scroll artworks right"><ArrowRight aria-hidden="true" /></Button></div></div>
               <div className="artwork-rail" id="artwork-rail" ref={railRef} aria-label={`${category.name} artworks`}>
                 {category.works.map((work, index) => <article className="artwork-card" key={work.title}>
-                  <Button variant="artwork" size="artwork" className="artwork-image" onClick={(event) => openWork(index, event.currentTarget)} aria-label={`View details for ${work.title}`}><img src={placeholder} alt="Artwork image coming soon" loading="lazy" /></Button>
+                  <Button variant="artwork" size="artwork" className="artwork-image" onClick={(event) => openWork(index, event.currentTarget)} aria-label={`View details for ${work.title}`}><img src={work.image} alt={work.title} loading="lazy" /></Button>
                   <div className="artwork-caption"><span className="section-kicker">{String(index + 1).padStart(2, "0")} / {String(category.works.length).padStart(2, "0")}</span><h3>{work.title}</h3><Button variant="detailLink" size="default" onClick={(event) => openWork(index, event.currentTarget)} aria-label={`Explore details for ${work.title}`}>Explore detail <ArrowRight aria-hidden="true" /></Button></div>
                 </article>)}
               </div>
@@ -156,14 +156,14 @@ function Index() {
           </div>
         </section>
 
-        <section className="studio-note" id="studio" aria-labelledby="studio-title"><div className="studio-note-inner"><div><div className="eyebrow">The practice</div><h2 id="studio-title">Many mediums.<br /><em>One imagination.</em></h2></div><div className="studio-copy"><p>From the softness of a watercolour wash to the glow of gold, every surface tells its story differently.</p><small>Artwork images are placeholders until the collection photographs are provided.</small></div></div></section>
+        <section className="studio-note" id="studio" aria-labelledby="studio-title"><div className="studio-note-inner"><div><div className="eyebrow">The practice</div><h2 id="studio-title">Many mediums.<br /><em>One imagination.</em></h2></div><div className="studio-copy"><p>From the softness of a watercolour wash to the glow of gold, every surface tells its story differently.</p></div></div></section>
       </main>
-      <footer className="site-footer"><span>The Layered Canvas</span><span>Indian-inspired art · An illustrative collection</span><a href="#top">Back to top ↑</a></footer>
+      <footer className="site-footer"><span>The Layered Canvas</span><span>Indian-inspired art · The collection</span><a href="#top">Back to top ↑</a></footer>
 
       {active && category && <div className="detail-backdrop" onMouseDown={(event) => { if (event.target === event.currentTarget) closeWork(); }}>
         <div className="detail-panel" role="dialog" aria-modal="true" aria-labelledby="detail-title" key={active.title}>
           <Button ref={closeRef} variant="detailIcon" size="icon" className="detail-close" onClick={closeWork} aria-label="Close artwork details"><X aria-hidden="true" /></Button>
-          <div className="detail-visual"><img src={placeholder} alt="Artwork image coming soon" /></div>
+          <div className="detail-visual"><img src={active.image} alt={active.title} /></div>
           <div className="detail-content"><div className="eyebrow">Artwork {String((selected ?? 0) + 1).padStart(2, "0")} / {String(category.works.length).padStart(2, "0")}</div><h2 id="detail-title">{active.title}</h2><p>{active.detail}</p>
             <dl className="detail-facts"><div><dt>Medium</dt><dd></dd></div><div><dt>Materials</dt><dd></dd></div><div><dt>Size</dt><dd></dd></div></dl>
             <div className="detail-actions"><Button variant="outline" size="icon" onClick={() => moveWork(-1)} aria-label="Previous artwork"><ArrowLeft aria-hidden="true" /></Button><span className="gallery-count">{String((selected ?? 0) + 1).padStart(2, "0")} — {String(category.works.length).padStart(2, "0")}</span><Button variant="outline" size="icon" onClick={() => moveWork(1)} aria-label="Next artwork"><ArrowRight aria-hidden="true" /></Button></div>
